@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/tentacle_pi.svg)]()
 
-Tentacle Pi is a growing collection of drivers for popular I2C sensors.
+Tentacle Pi is a growing collection of drivers for popular TWI sensors.
 
 
 Why did I create this repository?
@@ -18,10 +18,10 @@ Why did I create this repository?
 
 * No hardcoded platform specific drivers.
 
-* My goal is to support further I2C sensors in the future.
+* My goal is to support further TWI/SMBus sensors in the future.
 
 
-Supported I2C sensors are:
+Supported sensors are:
 
  * AM2315 / AM2321
  * BMP180
@@ -279,7 +279,7 @@ print("")
 
 ## Copyright & License
 ```
-Tentacle Pi - A collection of drivers for I2C/SMBus devices.
+Tentacle Pi - A collection of drivers for TWI/SMBus devices.
 Copyright (c) 2015 Alexander Rüedlinger <a.rueedlinger@gmail.com>
 
 This program is free software; you can redistribute it and/or modify
