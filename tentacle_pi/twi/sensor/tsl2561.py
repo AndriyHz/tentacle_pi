@@ -203,7 +203,7 @@ class TSL2561(object):
         if channel0 != 0:
             ratio1 = (channel1 << (self.RATIO_SCALE + 1)) / channel0
 
-        ratio = (ratio1 + 1) >> 1
+        ratio = int(ratio1 + 1) >> 1
         b, m = 0, 0
 
         if self._type == self.TYPE_CS:
