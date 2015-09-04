@@ -20,7 +20,7 @@ setup(
     classifiers=[],
     ext_modules=[],
     long_description="""\
-Tentacle Pi - A collection of drivers for I2C/SMBus devices.
+Tentacle Pi - A collection of drivers for TWI/SMBus devices.
 -------------------------------------
 
 
