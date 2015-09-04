@@ -41,7 +41,7 @@ class sdist(sdist_module.sdist):
 
 setup(
     name="tentacle_pi",
-    version="0.6.2",
+    version="1.0.0.dev",
     description="Tentacles for the Raspberry Pi!",
     url="https://github.com/lexruee/tentacle_pi",
     author="Alexander Rüedlinger",
@@ -54,5 +54,5 @@ setup(
 
     ext_modules=[Extension(name, src_dir) for (name, src_dir, _) in make_extensions(DRIVERS)],
 
-    license="MIT"
+    license="GPLv2"
 )
