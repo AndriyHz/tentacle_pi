@@ -16,6 +16,7 @@ GNU General Public License for more details.
 """
 
 __author__ = 'Alexander Rüedlinger'
+__all__ = ['TSL2561']
 
 
 from tentacle_pi.util import SMBusAdapter as Adapter
