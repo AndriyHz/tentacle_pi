@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/tentacle_pi.svg)]()
 
-Tentacle Pi is a growing collection of drivers for popular TWI sensors.
+Tentacle Pi is a growing collection of drivers for popular TWI/SMBus sensors.
 
 
 Why did I create this repository?
@@ -10,7 +10,7 @@ Why did I create this repository?
 * For my project at the University I need a single repository that
  contains all necessary drivers.
 
-* Besides that I want to learn how to write drivers for I2C sensors.
+* Besides that I want to learn how to write drivers for TWI/SMBus sensors.
 
 * No additional dependencies like boost, wiringPi or quick2wire.
 
@@ -55,15 +55,15 @@ Install the following packages:
 sudo apt-get install i2c-tools libi2c-dev python-dev build-essential
 ```
 
-### I2C Configuration
+### TWI/SMBus Configuration
 
 #### Raspberry Pi 1 / 2
 On the [Adafruit learning platform](https://learn.adafruit.com/) you will find a great tutorial
-[how to configure I2C](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
+[how to configure TWI (I2C)](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
 Besides that their products (AM2315, BMP180, TSL2561) are great :smile_cat: .
 
 #### Odroid C1
-Here is a great [blog post](https://www.abelectronics.co.uk/i2codroidc1/info.aspx) that explains how I2C can be configured on the Odroid C1.
+Here is a great [blog post](https://www.abelectronics.co.uk/i2codroidc1/info.aspx) that explains how TWI (I2C) can be configured on the Odroid C1.
 
 
 ### pip installer
@@ -98,7 +98,7 @@ git pull origin master
 git submodule update --init --recursive
 ```
 
-## Sensors - I2C addresses
+## Sensors - TWI/SMBus addresses
 
 | I2C device    | Address       | Sensor type   | Spec sheet |
 | ------------- |:-------------:|:-------------:|:-----------|
