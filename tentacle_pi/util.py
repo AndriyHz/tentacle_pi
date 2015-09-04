@@ -151,4 +151,4 @@ class I2CAdapter(object):
         self._close()
 
     def __enter__(self):
-        pass
+        return self
