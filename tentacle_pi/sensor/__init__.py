@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Tentacle Pi - A collection of drivers for I2C/SMBus devices.
+Tentacle Pi - A collection of drivers for TWI/SMBus devices.
 Copyright (c) 2015 Alexander Rüedlinger <a.rueedlinger@gmail.com>
 
 This program is free software; you can redistribute it and/or modify
