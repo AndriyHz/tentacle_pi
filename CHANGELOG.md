@@ -1,5 +1,8 @@
 ## Changelog
 
+#### 1.0.0
+ * change license from MIT to GPLv2
+
 ##### 0.6.2
   * fix module names in c extensions
 
