@@ -9,7 +9,7 @@
  * remove C extension code
  * restructure tentacle_pi module
    * move TWI (I2C) sensor drivers in module: tentacle_pi.twi.sensor
- * rewrite all drivers on 0.6.2 in pure python:
+ * rewrite all drivers in 0.6.2 in pure python:
    * AM2315 / AM2321
    * BMP180
    * TSL2561
