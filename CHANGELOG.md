@@ -1,7 +1,21 @@
 ## Changelog
 
-#### 1.0.0
+##### 1.0.0
  * change license from MIT to GPLv2
+ * add support for the following TWI (I2C) devices:
+   * BMP280
+   * BME280
+   * HTU21D
+ * remove C extension code
+ * restructure tentacle_pi module
+   * move TWI (I2C) sensor drivers in module: tentacle_pi.twi.sensor
+ * rewrite all drivers on 0.6.2 in pure python:
+   * AM2315 / AM2321
+   * BMP180
+   * TSL2561
+   * MCP9808
+   * MPL115A2
+   * LM75
 
 ##### 0.6.2
   * fix module names in c extensions
