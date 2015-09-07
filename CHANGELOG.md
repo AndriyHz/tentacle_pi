@@ -6,6 +6,7 @@
    * BMP280
    * BME280
    * HTU21D
+   * HDC1008
  * remove C extension code
  * restructure tentacle_pi module
    * move TWI (I2C) sensor drivers in module: tentacle_pi.twi.sensor
