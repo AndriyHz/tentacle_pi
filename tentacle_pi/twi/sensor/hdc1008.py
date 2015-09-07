@@ -108,4 +108,13 @@ class HDC1008(object):
         measurement['humidity'] = hum
         return measurement
 
+    def close(self):
+        self._adapter.close()
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
+
+    def __enter__(self):
+        return self
+
 
