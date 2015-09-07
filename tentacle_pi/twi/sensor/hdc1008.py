@@ -71,7 +71,6 @@ class HDC1008(object):
         serial_id >>= 7
         return serial_id
 
-
     def _read_temperature(self):
         self._adapter.write_byte(0x00)
         time.sleep(15 / 1000.0)
