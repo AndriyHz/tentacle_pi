@@ -27,6 +27,7 @@ import time
 
 
 class TSL2561(object):
+    """Driver implementation for the TSL2561 illuminance sensor."""
 
     # T, FN, and CL Package coefficients
     K1T = 0x0040
@@ -124,6 +125,12 @@ class TSL2561(object):
     TYPE_CS = 1
 
     def __init__(self, addr=0x39, bus=1):
+        """Create a TSL2561 sensor device object.
+
+        :param addr: optional i2c address of the device
+        :param bus: optional number of the i2c bus
+        :return: TSL2561 sensor device object.
+        """
         self._addr = addr
         self._adapter = Adapter(addr, bus)
         self._gain = self.GAIN_0X
@@ -270,9 +277,18 @@ class TSL2561(object):
 
     @property
     def illuminance(self):
+        """Return illuminance in lux.
+
+        :return: return illuminance
+        """
         return self._get_illuminance()
 
     def measure(self, measurement=None):
+        """ Take a measurement of all available sensors.
+
+        :param measurement: optional dictionary to store sensor values
+        :return: return dictionary with stored sensor values
+        """
         measurement = measurement or {}
         measurement['illuminance'] = self._get_illuminance()
         return measurement

@@ -26,6 +26,7 @@ from ctypes import c_short, c_ushort, c_byte, c_ubyte
 
 
 class BME280(object):
+    """Driver implementation for the BME280 integrated environmental sensor (humidity, pressure, temperature)."""
 
     SEA_LEVEL = 101325
 
@@ -88,6 +89,12 @@ class BME280(object):
     REG_HUM = 0xFD
 
     def __init__(self, addr=0x77, bus=1):
+        """Create a BME280 sensor device object.
+
+        :param addr: optional i2c address of the device
+        :param bus: optional number of the i2c bus
+        :return: BME280 sensor device object.
+        """
         self._osrs_h = self.OSRS_H1
         self._osrs_t = self.OSRS_T1
         self._osrs_p = self.OSRS_P1
@@ -289,23 +296,44 @@ class BME280(object):
 
     @property
     def temperature(self):
+        """Return temperature in Celsius.
+
+        :return: return temperature
+        """
         return self._get_temperature()
 
     @property
     def pressure(self):
+        """Return pressure in pascal.
+
+        :return: return pressure
+        """
         return self._get_pressure()
 
     @property
     def humidity(self):
+        """Return relative humidity..
+
+        :return: return humidity
+        """
         return self._get_humidity()
 
     @property
     def altitude(self):
+        """Return altitude in meters.
+
+        :return: return altitude
+        """
         p = self.pressure or 0
         alt = self._get_altitude(p)
         return alt
 
     def measure(self, measurement=None):
+        """ Take a measurement of all available sensors.
+
+        :param measurement: optional dictionary to store sensor values
+        :return: return dictionary with stored sensor values
+        """
         measurement = measurement or {}
         temp = self._get_temperature()
         pressure = self._get_pressure()

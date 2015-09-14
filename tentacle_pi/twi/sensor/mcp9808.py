@@ -25,6 +25,7 @@ from tentacle_pi.util import SMBusAdapter as Adapter
 
 
 class MCP9808(object):
+    """Driver implementation for the MCP9808 temperature sensor."""
 
     REG_CONFIG = 0x01
     REG_TMP_MSB = 0x02
@@ -39,6 +40,12 @@ class MCP9808(object):
     DEVICE_ID = 0x04
 
     def __init__(self, addr=0x18, bus=1):
+        """Create a MCP9808 sensor device object.
+
+        :param addr: optional i2c address of the device
+        :param bus: optional number of the i2c bus
+        :return: MCP9808 sensor device object.
+        """
         self._adapter = Adapter(addr, bus)
         self._device_id = self._read_device_id()
         self._manuf_id = self._read_manuf_id()
@@ -75,9 +82,18 @@ class MCP9808(object):
 
     @property
     def temperature(self):
+        """Return temperature in Celsius.
+
+        :return: return temperature
+        """
         return self._get_temperature()
 
     def measure(self, measurement=None):
+        """ Take a measurement of all available sensors.
+
+        :param measurement: optional dictionary to store sensor values
+        :return: return dictionary with stored sensor values
+        """
         measurement = measurement or {}
         temp = self._get_temperature()
 

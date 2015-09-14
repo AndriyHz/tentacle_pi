@@ -25,6 +25,13 @@ from tentacle_pi.twi.sensor.am2315 import AM2315
 
 
 class AM2321(AM2315):
+    """Driver implementation for the AM2321 temperature / humidity sensor."""
 
     def __init__(self, addr=0x5c, bus=1):
+        """Create a AM2321 sensor device object.
+
+        :param addr: optional i2c address of the device
+        :param bus: optional number of the i2c bus
+        :return: AM2321 sensor device object.
+        """
         super(AM2321, self).__init__(addr, bus)

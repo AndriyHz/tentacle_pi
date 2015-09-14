@@ -25,6 +25,7 @@ from tentacle_pi.util import SMBusAdapter as Adapter
 
 
 class LM75(object):
+    """Driver implementation for the LM75 temperature sensor."""
 
     REG_TMP = 0x00
     REG_CONF = 0x01
@@ -32,6 +33,12 @@ class LM75(object):
     REG_TOS = 0x03
 
     def __init__(self, addr=0x48, bus=1):
+        """Create a LM75 sensor device object.
+
+        :param addr: optional i2c address of the device
+        :param bus: optional number of the i2c bus
+        :return: LM75 sensor device object.
+        """
         self._adapter = Adapter(addr, bus)
 
     def ok(self):
@@ -46,9 +53,18 @@ class LM75(object):
 
     @property
     def temperature(self):
+        """Return temperature in Celsius.
+
+        :return: return temperature
+        """
         return self._get_temperature()
 
     def measure(self, measurement=None):
+        """ Take a measurement of all available sensors.
+
+        :param measurement: optional dictionary to store sensor values
+        :return: return dictionary with stored sensor values
+        """
         measurement = measurement or {}
         temp = self._get_temperature()
 

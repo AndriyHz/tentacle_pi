@@ -25,6 +25,13 @@ from tentacle_pi.twi.sensor.bmp180 import BMP180
 
 
 class BMP85(BMP180):
+    """Driver implementation for the BMP85 Barometric Pressure / Temperature / Altitude sensor."""
 
     def __init__(self, addr=0x77, bus=1):
+        """Create a BMP85 sensor device object.
+
+        :param addr: optional i2c address of the device
+        :param bus: optional number of the i2c bus
+        :return: BMP85 sensor device object.
+        """
         super(BMP85, self).__init__(addr, bus)

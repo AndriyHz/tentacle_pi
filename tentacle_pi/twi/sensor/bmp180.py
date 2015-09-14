@@ -27,6 +27,7 @@ from ctypes import c_short, c_ushort
 
 
 class BMP180(object):
+    """Driver implementation for the BMP180 Barometric Pressure / Temperature / Altitude sensor."""
 
     SEA_LEVEL = 101325
 
@@ -66,6 +67,12 @@ class BMP180(object):
     WAITING_TIME = 5/1000.0  # s
 
     def __init__(self, addr=0x77, bus=1):
+        """Create a BMP180 sensor device object.
+
+        :param addr: optional i2c address of the device
+        :param bus: optional number of the i2c bus
+        :return: BMP180 sensor device object.
+        """
         self._oss = self.PRE_OSS_LOW
 
         self._adapter = Adapter(addr, bus)
@@ -213,15 +220,28 @@ class BMP180(object):
 
     @property
     def temperature(self):
+        """Return temperature in Celsius.
+
+        :return: return temperature
+        """
         return self._get_temperature()
 
     @property
     def altitude(self):
+        """Return altitude in meters.
+
+        :return: return altitude
+        """
         p = self.pressure or 0
         alt = self._get_altitude(p)
         return alt
 
     def measure(self, measurement=None):
+        """ Take a measurement of all available sensors.
+
+        :param measurement: optional dictionary to store sensor values
+        :return: return dictionary with stored sensor values
+        """
         measurement = measurement or {}
         temp = self._get_temperature()
         pressure = self._get_pressure()

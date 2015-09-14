@@ -27,6 +27,7 @@ from ctypes import c_short
 
 
 class MPL115A2(object):
+    """Driver implementation for the MCP9808 pressure / temperature sensor."""
 
     SEA_LEVEL = 101325
 
@@ -40,6 +41,12 @@ class MPL115A2(object):
     REG_C12_M = 0x0A
 
     def __init__(self, addr=0x60, bus=1):
+        """Create a MPL115A2 sensor device object.
+
+        :param addr: optional i2c address of the device
+        :param bus: optional number of the i2c bus
+        :return: MPL115A2 sensor device object.
+        """
         self._adapter = Adapter(addr, bus)
         self._coefficient_names = ['a0', 'b1', 'b2', 'c12']
         self._coefficients = {}
@@ -97,19 +104,36 @@ class MPL115A2(object):
 
     @property
     def pressure(self):
+        """Return pressure in pascal.
+
+        :return: return pressure
+        """
         return self._get_pressure()
 
     @property
     def temperature(self):
+        """Return temperature in Celsius.
+
+        :return: return temperature
+        """
         return self._get_temperature()
 
     @property
     def altitude(self):
+        """Return altitude in meters.
+
+        :return: return altitude
+        """
         p = float(self.pressure)
         alt = 44330 * (1 - pow((p / self.SEA_LEVEL), 1/5.255))
         return alt
 
     def measure(self, measurement=None):
+        """ Take a measurement of all available sensors.
+
+        :param measurement: optional dictionary to store sensor values
+        :return: return dictionary with stored sensor values
+        """
         measurement = measurement or {}
         temp = self._get_temperature()
         pressure = self._get_pressure()

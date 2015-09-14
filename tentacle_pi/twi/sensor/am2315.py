@@ -27,9 +27,12 @@ from tentacle_pi.util import I2CAdapter as Adapter
 
 
 class AM2315(object):
-    """
+    """Driver implementation for the AM2315 temperature / humidity sensor.
+
+    Note:
     Based on the discussion in the adafruit community:
     https://forums.adafruit.com/viewtopic.php?f=45&t=48285&start=45
+
     """
 
     REG_RH_H = 0x00
@@ -47,6 +50,12 @@ class AM2315(object):
     I2C_SLAVE = 0x0703
 
     def __init__(self, addr=0x5c, bus=1):
+        """Create a AM2315 sensor device object.
+
+        :param addr: optional i2c address of the device
+        :param bus: optional number of the i2c bus
+        :return: AM2315 sensor device object.
+        """
         self._adapter = Adapter(addr, bus)
 
     def _read_data(self):
@@ -75,15 +84,28 @@ class AM2315(object):
 
     @property
     def temperature(self):
+        """Return temperature in Celsius.
+
+        :return: return temperature
+        """
         data = self._read_data()
         return self._get_temperature(data)
 
     @property
     def humidity(self):
+        """Return the humidity in Celsius.
+
+        :return: return humidity
+        """
         data = self._read_data()
         return self._get_humidity(data)
 
     def measure(self, measurement=None):
+        """ Take a measurement of all available sensors.
+
+        :param measurement: optional dictionary to store sensor values
+        :return: return dictionary with stored sensor values
+        """
         measurement = measurement or {}
         data = self._read_data()
         temp = self._get_temperature(data)
@@ -102,6 +124,8 @@ class AM2315(object):
         time.sleep(0.01)
 
     def close(self):
+        """Close and cleanup internal resources.
+        """
         self._adapter.close()
 
     def __exit__(self, exc_type, exc_val, exc_tb):

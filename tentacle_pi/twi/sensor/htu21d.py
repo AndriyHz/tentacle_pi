@@ -27,6 +27,7 @@ import time
 
 
 class HTU21D(object):
+    """Driver implementation for the HTU21D temperature / humidity sensor."""
 
     CMD_TEMP_MEAS = 0xf3
     CMD_HUM_MEAS = 0xf5
@@ -38,6 +39,12 @@ class HTU21D(object):
     REG_READ = 0xe7
 
     def __init__(self, addr=0x40, bus=1):
+        """Create a HTU21D sensor device object.
+
+        :param addr: optional i2c address of the device
+        :param bus: optional number of the i2c bus
+        :return: HTU21D sensor device object.
+        """
         self._adapter = Adapter(addr, bus)
         self._reset()
 
@@ -62,15 +69,28 @@ class HTU21D(object):
 
     @property
     def temperature(self):
+        """Return temperature in Celsius.
+
+        :return: return temperature
+        """
         temp = self._read_temperature()
         return temp
 
     @property
     def humidity(self):
+        """Return relative humidity.
+
+        :return: return humidity
+        """
         hum = self._read_humidity()
         return hum
 
     def measure(self, measurement=None):
+        """ Take a measurement of all available sensors.
+
+        :param measurement: optional dictionary to store sensor values
+        :return: return dictionary with stored sensor values
+        """
         measurement = measurement or {}
         temp = self._read_temperature()
         hum = self._read_humidity()

@@ -26,6 +26,7 @@ import time
 
 
 class HDC1008(object):
+    """Driver implementation for the HDC1008 temperature / humidity sensor."""
 
     ADDR_1 = 0x40
     ADDR_2 = 0x41
@@ -46,6 +47,12 @@ class HDC1008(object):
     REG_SER_ID3 = 0xfd
 
     def __init__(self, addr=0x40, bus=1):
+        """Create a HDC1008 sensor device object.
+
+        :param addr: optional i2c address of the device
+        :param bus: optional number of the i2c bus
+        :return: HDC1008 sensor device object.
+        """
         self._adapter = Adapter(addr, bus)
         self._config = self.TMP_HUM | self.HUM_RES_14 | self.TMP_RES_14
         self._serial_id = self._read_serial()
@@ -89,10 +96,18 @@ class HDC1008(object):
 
     @property
     def temperature(self):
+        """Return temperature in Celsius.
+
+        :return: return temperature
+        """
         return self._read_temperature()
 
     @property
     def humidity(self):
+        """Return relative humidity.
+
+        :return: return humidity
+        """
         return self._read_humidity()
 
     @property
@@ -100,6 +115,11 @@ class HDC1008(object):
         return self._serial_id
 
     def measure(self, measurement=None):
+        """ Take a measurement of all available sensors.
+
+        :param measurement: optional dictionary to store sensor values
+        :return: return dictionary with stored sensor values
+        """
         measurement = measurement or {}
         temp = self._read_temperature()
         hum = self._read_humidity()
