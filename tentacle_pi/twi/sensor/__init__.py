@@ -19,3 +19,16 @@ GNU General Public License for more details.
 """
 
 __author__ = 'Alexander Rüedlinger'
+
+from .am2321 import AM2321
+from .am2315 import AM2315
+from .bmp85 import BMP85
+from .bmp180 import BMP180
+from .bmp280 import BMP280
+from .bme280 import BME280
+from .hdc1008 import HDC1008
+from .htu21d import HTU21D
+from .lm75 import LM75
+from .mcp9808 import MCP9808
+from .mpl115a2 import MPL115A2
+from .tsl2561 import TSL2561
