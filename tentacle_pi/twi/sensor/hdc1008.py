@@ -115,7 +115,7 @@ class HDC1008(object):
         return self._serial_id
 
     def measure(self, measurement=None):
-        """ Take a measurement of all available sensors.
+        """Take a measurement of all available sensors.
 
         :param measurement: optional dictionary to store sensor values
         :return: return dictionary with stored sensor values

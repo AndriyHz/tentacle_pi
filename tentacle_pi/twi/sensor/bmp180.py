@@ -237,7 +237,7 @@ class BMP180(object):
         return alt
 
     def measure(self, measurement=None):
-        """ Take a measurement of all available sensors.
+        """Take a measurement of all available sensors.
 
         :param measurement: optional dictionary to store sensor values
         :return: return dictionary with stored sensor values
