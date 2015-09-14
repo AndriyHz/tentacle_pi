@@ -28,7 +28,7 @@ from tentacle_pi.util import I2CAdapter as Adapter
 
 class AM2315(object):
     """
-    Based on discussion in the adafruit community:
+    Based on the discussion in the adafruit community:
     https://forums.adafruit.com/viewtopic.php?f=45&t=48285&start=45
     """
 
