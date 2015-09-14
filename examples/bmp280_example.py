@@ -8,15 +8,23 @@
 
 import time
 
-from tentacle_pi.twi.sensor.bmp280 import BMP280
+from tentacle_pi.twi.sensor import BMP280
 
 
 bmp = BMP280()
 
-if bmp.ok():
-    for i in range(0, 5):
-        measurement = bmp.measure()
-        for key, val in measurement.items():
-            print("%s: %s" % (key, val))
-        print("")
-        time.sleep(3)
+for i in range(0, 5):
+    # take measurements from all sensors
+    measurement = bmp.measure()
+
+    # iterate over measurements
+    for key, val in measurement.items():
+        print("%s: %s" % (key, val))
+    print("")
+
+    time.sleep(2)
+
+temp = bmp.temperature  # measure temperature in Celsius
+pressure = bmp.pressure  # measure pressure in pascal
+print("temperature[C]: %s" % temp)
+print("pressure[pa]: %s" % pressure)

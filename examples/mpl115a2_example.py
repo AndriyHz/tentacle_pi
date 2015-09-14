@@ -19,3 +19,9 @@ for i in range(0, 5):
         print("%s: %s" % (key, val))
     print("")
     time.sleep(3)
+
+
+temp = mpl.temperature  # measure temperature in Celsius
+pressure = mpl.pressure  # measure pressure in pascal
+print("temperature[C]: %s" % temp)
+print("pressure[pa]: %s" % pressure)

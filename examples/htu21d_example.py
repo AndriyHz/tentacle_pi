@@ -8,7 +8,7 @@
 
 import time
 
-from tentacle_pi.twi.sensor.htu21d import HTU21D
+from tentacle_pi.twi.sensor import HTU21D
 
 
 with HTU21D() as htu:
@@ -18,3 +18,8 @@ with HTU21D() as htu:
             print("%s: %s" % (key, val))
         print("")
         time.sleep(3)
+
+    temp = htu.temperature  # measure temperature in Celsius
+    hum = htu.humidity  # measure relative humidity
+    print("temperature[C]: %s" % temp)
+    print("rel. humidity: %s" % hum)

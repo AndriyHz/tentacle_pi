@@ -8,7 +8,7 @@
 
 import time
 
-from tentacle_pi.twi.sensor.tsl2561 import TSL2561
+from tentacle_pi.twi.sensor import TSL2561
 
 tsl = TSL2561()
 
@@ -18,3 +18,6 @@ for i in range(0, 5):
         print("%s: %s" % (key, val))
         print("")
         time.sleep(3)
+
+illuminance = tsl.illuminance  # measure temperature in lux
+print("illuminance[lx]: %s" % illuminance)
